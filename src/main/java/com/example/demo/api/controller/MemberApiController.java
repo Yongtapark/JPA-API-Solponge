@@ -62,8 +62,6 @@ public class MemberApiController {
                     request.getMemberPhone2(),
                     request.getMemberPhone3());
 
-
-            memberService.update(memberNum, updateMember);
             return ResponseEntity.ok(new MemberUpdatedResponse(updateMember.getMemberNum()));
         }else {
             return ResponseEntity.notFound().build();
