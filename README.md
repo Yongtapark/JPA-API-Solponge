@@ -6,7 +6,7 @@
 ### 사전 요구 사항
 Java 11
 SpringBoot
-SpringBoot Data JPA
+Spring Data JPA
 QueryDsl
 H2 DB
 ### 변경점
