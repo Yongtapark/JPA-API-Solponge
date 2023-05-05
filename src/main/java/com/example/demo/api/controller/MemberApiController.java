@@ -1,5 +1,6 @@
 package com.example.demo.api.controller;
 
+import com.example.demo.api.apiService.MemberApiService;
 import com.example.demo.api.dto.member.MemberCreatedRequest;
 import com.example.demo.api.dto.member.MemberCreatedResponse;
 import com.example.demo.api.dto.member.MemberUpdatedRequest;
@@ -20,19 +21,29 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api.com.solponge")
+@RequestMapping("/api.com.solponge/members")
 @Slf4j
 public class MemberApiController {
     private final MemberService memberService;
+    private final MemberApiService memberApiService;
 
-    @PostMapping("/members")
-    public ResponseEntity<MemberCreatedResponse> saveMember(@RequestBody MemberCreatedRequest request){
-        return memberService.join(request);
+    @PostMapping
+    public ResponseEntity<MemberCreatedResponse> saveMember(@RequestBody @Validated MemberCreatedRequest request){
+        Long memberNum = memberApiService.join(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new MemberCreatedResponse(memberNum));
     }
 
-    @PutMapping("/members/{memberNum}")
+    @PutMapping("/{memberNum}")
     public ResponseEntity<MemberUpdatedResponse> updateMember(@RequestBody @Validated MemberUpdatedRequest request,
                                                               @PathVariable("memberNum") Long memberNum){
-      return memberService.update(memberNum,request);
+        Long update = memberApiService.update(memberNum, request);
+        return ResponseEntity.ok(new MemberUpdatedResponse(update));
+
+    }
+
+    @DeleteMapping("/{memberNum}")
+    public ResponseEntity<Void> deleteMember(@PathVariable Long memberNum){
+        memberService.delete(memberNum);
+      return ResponseEntity.noContent().build();
     }
 }

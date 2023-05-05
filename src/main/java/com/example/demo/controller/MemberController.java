@@ -153,7 +153,7 @@ public class MemberController {
     /*회원 정보 수정 시 해당 정보 세션에 저장*/
     private void sessionSave(Member loginMember, HttpSession Session) {
         // 업데이트된 멤버 객체 찾기
-        Member updateMember = memberService.findByNum(loginMember.getMemberNum()).get();
+        Member updateMember = memberService.findByMemberNum(loginMember.getMemberNum());
         log.info("updatedMember={}",updateMember);
         //세션에 업데이트된 찾은 회원 정보 저장
         Session.setAttribute(SessionConst.LOGIN_MEMBER,updateMember);

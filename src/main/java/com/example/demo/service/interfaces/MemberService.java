@@ -17,12 +17,9 @@ import java.util.Optional;
 public interface MemberService {
 
     Long join(Member member);
-    ResponseEntity<MemberCreatedResponse> join(MemberCreatedRequest request);
-
     void update(Long memberNum, Member member);
-    ResponseEntity<MemberUpdatedResponse> update(Long memberNum, MemberUpdatedRequest request);
     void delete(Long memberNum);//탈퇴
-    Optional<Member> findByNum(Long memberNum);
+    Member findByMemberNum(Long memberNum);
 
     List<Member> findAll();
     Page<Member> findAll(Pageable pageable);

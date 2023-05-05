@@ -72,7 +72,7 @@ public class PaymentController {
         long paymentOrderNum = System.currentTimeMillis();
         for (OrderList list : orderList) {
             Product product = productService.findByNo(list.getProductNum()).get();
-            Member member = memberService.findByNum(payForm.getMemberNum()).get();
+            Member member = memberService.findByMemberNum(payForm.getMemberNum());
             if(product.getProductStock()-list.getPaymentStock()<0){
                 throw new RuntimeException("상품 재고가 부족합니다.");
             }else {

@@ -1,9 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.api.dto.member.MemberCreatedRequest;
-import com.example.demo.api.dto.member.MemberCreatedResponse;
-import com.example.demo.api.dto.member.MemberUpdatedRequest;
-import com.example.demo.api.dto.member.MemberUpdatedResponse;
 import com.example.demo.domain.member.Member;
 import com.example.demo.exception.MemberNotFoundException;
 import com.example.demo.utils.SearchCond;
@@ -13,14 +9,11 @@ import com.example.demo.service.interfaces.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-@Service
 @RequiredArgsConstructor
 @Transactional
 public class MemberServiceImpl implements MemberService {
@@ -35,7 +28,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void update(Long memberNo, Member member) {
-        Member findmember = memberRepository.findById(memberNo).orElseThrow();//?
+        Member findmember = memberRepository.findById(memberNo).orElseThrow(() -> new MemberNotFoundException("회원이 존재하지 않습니다"));;//?
         findmember.setMemberPwd(member.getMemberPwd());
         findmember.setMemberPhone(member.getMemberPhone());
         findmember.setMemberAddress(member.getMemberAddress());
@@ -45,12 +38,12 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void delete(Long memberNum) {
-        memberQueryRepository.deleteLogical(memberNum);
+        Member member = findByMemberNum(memberNum);
+        member.setIsDeleted(Boolean.TRUE);
     }
 
-    @Override
-    public Optional<Member> findByNum(Long memberNo) {
-        return memberRepository.findById(memberNo);
+    public Member findByMemberNum(Long memberNo) {
+        return memberRepository.findById(memberNo).orElseThrow(() -> new MemberNotFoundException("회원이 존재하지 않습니다"));
     }
 
     @Override
@@ -76,43 +69,4 @@ public class MemberServiceImpl implements MemberService {
 
     }
 
-    /**
-     * API SERVICE
-     */
-
-    @Override
-    public ResponseEntity<MemberCreatedResponse> join(MemberCreatedRequest request) {
-        Member member=new Member(
-                request.getMemberId(),
-                request.getMemberPwd(),
-                request.getMemberName(),
-                request.getMemberAddress(),
-                request.getMemberEmail(),
-                request.getMemberPhone()
-        );
-        Long id = join(member);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new MemberCreatedResponse(id));
-
-    }
-
-    @Override
-    public ResponseEntity<MemberUpdatedResponse> update(Long memberNum, MemberUpdatedRequest request) {
-        Optional<Member> findMember = findByNum(memberNum);
-        if (findMember.isPresent()){
-            String email = request.getMemberEmail1() + "@" + request.getMemberEmail2();
-            String address = request.getMemberAddress1() + "/" + request.getMemberAddress2() + "/" + request.getMemberAddress3();
-            String phone = request.getMemberPhone1() + "-" + request.getMemberPhone2() + "-" + request.getMemberPhone3();
-
-            Member updateMember = findMember.orElseThrow(() -> new MemberNotFoundException("회원을 찾을 수 없습니다."));
-
-            updateMember.setMemberPwd(request.getMemberPwd());
-            updateMember.setMemberAddress(address);
-            updateMember.setMemberEmail(email);
-            updateMember.setMemberPhone(phone);
-            return ResponseEntity.ok(new MemberUpdatedResponse(updateMember.getMemberNum()));
-        }else {
-            return ResponseEntity.notFound().build();
-
-        }
-    }
 }
