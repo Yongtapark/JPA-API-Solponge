@@ -3,6 +3,7 @@ package com.example.demo.api.dto.member;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class MemberUpdatedRequest {
@@ -42,4 +43,19 @@ public class MemberUpdatedRequest {
     private String memberPhone2;
     @NotEmpty
     private String memberPhone3;
+
+    @NotNull
+    public String combineEmail() {
+        return this.getMemberEmail1() + "@" + this.getMemberEmail2();
+    }
+
+    @NotNull
+    public String combinePhone() {
+        return this.getMemberPhone1() + "-" + this.getMemberPhone2() + "-" + this.getMemberPhone3();
+    }
+
+    @NotNull
+    public String combineAddress() {
+        return this.getMemberAddress1() + "/" + this.getMemberAddress2() + "/" + this.getMemberAddress3();
+    }
 }

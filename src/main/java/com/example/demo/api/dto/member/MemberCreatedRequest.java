@@ -4,6 +4,8 @@ import com.example.demo.domain.member.Grade;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 @Data
 public class MemberCreatedRequest {
 
@@ -60,5 +62,20 @@ public class MemberCreatedRequest {
         this.memberAddress = memberAddress;
         this.memberEmail = memberEmail;
         this.memberPhone = memberPhone;
+    }
+
+    @NotNull
+    public String combineEmail() {
+        return this.getMemberEmail1() + "@" + this.getMemberEmail2();
+    }
+
+    @NotNull
+    public String combinePhone() {
+        return this.getMemberPhone1() + "-" + this.getMemberPhone2() + "-" + this.getMemberPhone3();
+    }
+
+    @NotNull
+    public String combineAddress() {
+        return this.getMemberAddress1() + "/" + this.getMemberAddress2() + "/" + this.getMemberAddress3();
     }
 }
