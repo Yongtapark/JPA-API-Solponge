@@ -19,7 +19,7 @@ JPA
 QueryDsl
 H2 DB
 ### 변경점
-##### 1. 디렉토리 구조 및 명칭 변경
+##### 1. model -> RESTful API 
 
 ##### 2. OSIV OFF 를 통한 커넥션 리소스 확보
 
