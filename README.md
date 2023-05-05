@@ -17,6 +17,9 @@ H2 DB
 ##### 3. 데이터 쿼리 최적화
 
 ##### 4. 데이터 변경 추적
+![auditing](https://user-images.githubusercontent.com/91367204/236423737-1d735926-d421-4946-8852-d20135b0d7e3.PNG)
+![auditingDB](https://user-images.githubusercontent.com/91367204/236423753-1b4e8584-70dc-471f-933e-ffb7bdbb36b8.PNG)
+
 
 ## 작성자
 박용타
