@@ -43,7 +43,7 @@ public class ProductController {
 
         int nowPage= paginatedProducts.getPageable().getPageNumber()+1 ;
         int totalPages = paginatedProducts.getTotalPages();
-        int startPage = Math.max(nowPage - 5, 1);
+        int startPage = (int) paginatedProducts.getPageable().getOffset();
         int endPage = Math.min(startPage + 9, totalPages);
 
         if (endPage - startPage < 9 && totalPages > 9) {

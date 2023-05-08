@@ -93,7 +93,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> findAll(Pageable pageable) {
-        PageRequest productNumDesc = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), Sort.by("productDate").descending());
-        return productRepository.findAllByIsDeletedFalse(productNumDesc);
+        return productRepository.findAllByIsDeletedFalse(pageable);
     }
 }

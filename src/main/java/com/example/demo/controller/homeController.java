@@ -67,7 +67,7 @@ public class homeController {
     @PostMapping("/join")
     public String postJoin(@Validated @ModelAttribute("member") MemberCreatedRequest member, BindingResult bindingResult){
         log.info("==postJoin==");
-        List<Member> all = memberService.findAll();
+       /* List<Member> all = memberService.findAll();
         for (Member members : all) {
             String memberId = members.getMemberId();
             if(member.getMemberId().equals(memberId)){
@@ -101,7 +101,7 @@ public class homeController {
         log.info("joinedMember={}",join);
         //회원가입 시 카트 생성
         Cart cart = cartService.createCart(new Cart(joindMember));
-        log.info("cartCreated={}",cart);
+        log.info("cartCreated={}",cart);*/
         return "member/addComplete";
     }
 

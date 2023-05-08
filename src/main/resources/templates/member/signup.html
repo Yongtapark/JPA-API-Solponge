@@ -5,8 +5,40 @@
   <title>Sign Up</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/joinForm.css}">
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script th:src="@{/js/login.js}"></script>
   <script>
+      function join(id){
+        console.log("join?")
+        var joinMemberInfo = document.forms['frm'];
+        var newMemberData = {
+          "memberId" : joinMemberInfo.elements['memberId'].value,
+          "memberPwd" : joinMemberInfo.elements['memberPwd'].value,
+          "memberPwdCheck" : joinMemberInfo.elements['memberPwdCheck'].value,
+          "memberName" : joinMemberInfo.elements['memberName'].value,
+          "memberAddress1" : joinMemberInfo.elements['memberAddress1'].value,
+          "memberAddress2" : joinMemberInfo.elements['memberAddress2'].value,
+          "memberAddress3" : joinMemberInfo.elements['memberAddress3'].value,
+          "memberEmail1" : joinMemberInfo.elements['memberEmail1'].value,
+          "memberEmail2" : joinMemberInfo.elements['memberEmail2'].value,
+          "memberPhone1" : joinMemberInfo.elements['memberPhone1'].value,
+          "memberPhone2" : joinMemberInfo.elements['memberPhone2'].value,
+          "memberPhone3" : joinMemberInfo.elements['memberPhone3'].value,
+        };
+        console.log(newMemberData)
+
+        $.ajax({
+          url: "/api.com.solponge/members",
+          type: 'POST',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify(newMemberData),
+          success: function (data) {
+            console.log(data);
+          }
+        });
+      }
+
     function infocheck(){
       var emailExp = /^[a-z0-9]{1}[a-z0-9\-]+[a-z0-9]{1}\.(([a-z]{1}[a-z.]+[a-z]{1}[a-z]+)|([a-z]+))$/;
       var phonExp = /^[0-9]{4}$/;
@@ -70,20 +102,20 @@
     <table>
       <tr>
         <th>아이디</th>
-        <td><input type="text" id="memberId" name="MEMBER_ID" th:field="*{memberId}"
+        <td><input type="text" id="memberId" name="memberId" th:value="*{memberId}"
         th:errorclass="field-error" class="form-control"/>
           <div class="field-error" th:errors="*{memberId}" style="color: red">아이디가 존재합니다.</div>
         </td>
       </tr>
       <tr>
         <th>비밀번호</th>
-        <td><input type="password" id="memberPwd" name="MEMBER_PWD" th:field="*{memberPwd}" th:errorclass="field-error"/>
+        <td><input type="password" id="memberPwd" name="memberPwd" th:field="*{memberPwd}" th:errorclass="field-error"/>
           <div class="field-error" th:errors="*{memberPwd}" style="color: red">비밀번호를 입력하세요</div>
         </td>
       </tr>
       <tr>
         <th>비밀번호 확인</th>
-        <td><input type="password" id="memberPwdCheck" name="MEMBER_PWD_CHECK" th:field="*{memberPwdCheck}"/>
+        <td><input type="password" id="memberPwdCheck" name="memberPwdCheck" th:field="*{memberPwdCheck}"/>
           <span class="error" th:if="${#fields.hasErrors('memberPwdCheck')}" th:errors="*{memberPwdCheck}" style="color: red"></span>
         </td>
       </tr>
@@ -96,8 +128,8 @@
       </tr>
       <tr>
         <th>이메일</th>
-        <td><input type="text" size="16" id="email1" name="MEMBER_EMAIL1" th:field="*{memberEmail1}"/> @
-          <input type="text" size="20" id="email2" name="MEMBER_EMAIL2" value="naver.com" th:field="*{memberEmail2}"/>
+        <td><input type="text" size="16" id="email1" name="memberEmail1" th:field="*{memberEmail1}"/> @
+          <input type="text" size="20" id="email2" name="memberEmail2" value="naver.com" th:field="*{memberEmail2}"/>
           <select name="emails" id="emails" size="1" onchange="mailCheck()">
             <option value="naver.com" selected>naver.com</option>
             <option value="hanmail.net">hanmail.net</option>
@@ -108,28 +140,29 @@
       </tr>
       <tr>
         <th>휴대폰 번호</th>
-        <td><select name="MEMBER_PHONE1" size="1" id="firstnum" th:field="*{memberPhone1}">
+        <td><select name="memberPhone1" size="1" id="firstnum" th:field="*{memberPhone1}">
           <option value="010">010</option>
           <option value="011">011</option>
           <option value="013">013</option>
           <option value="017">017</option>
           <option value="018">018</option>
         </select>
-          <input type="text" size="4" maxlength="4" minlength="4" name="MEMBER_PHONE2" id="secnum" th:field="*{memberPhone2}"/>-
-          <input type="text" size="4" maxlength="4" minlength="4" name="MEMBER_PHONE3" id="thrnum" th:field="*{memberPhone3}"/></td>
+          <input type="text" size="4" maxlength="4" minlength="4" name="memberPhone2" id="secnum" th:field="*{memberPhone2}"/>-
+          <input type="text" size="4" maxlength="4" minlength="4" name="memberPhone3" id="thrnum" th:field="*{memberPhone3}"/></td>
       </tr>
       <tr>
         <th>주소</th>
         <td>
-          <input type="text" name="MEMBER_ADDRESS1" id="sample6_postcode" placeholder="우편번호" readonly th:field="*{memberAddress1}">
+          <input type="text" name="memberAddress1" id="sample6_postcode" placeholder="우편번호" readonly th:field="*{memberAddress1}">
           <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-          <input type="text" name="MEMBER_ADDRESS2" id="sample6_address" placeholder="주소" readonly th:field="*{memberAddress2}">
-          <input type="text" name="MEMBER_ADDRESS3" id="sample6_detailAddress" placeholder="상세주소" th:field="*{memberAddress3}">
+          <input type="text" name="memberAddress2" id="sample6_address" placeholder="주소" readonly th:field="*{memberAddress2}">
+          <input type="text" name="memberAddress3" id="sample6_detailAddress" placeholder="상세주소" th:field="*{memberAddress3}">
         </td>
       </tr>
       <tr>
         <td></td>
-        <td><input type="submit" value="회원가입"><input type="button" onclick="location.href='/com.solponge/main'" value="취소"></td>
+        <td><input type="button" value="회원가입" onclick="join(this.id)">
+          <input type="button" onclick="location.href='/com.solponge/main'" value="취소"></td>
       </tr>
     </table>
   </div>

@@ -19,6 +19,10 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class MemberApiService {
+
+    /**
+     * 기본 CRUD
+     */
     private final MemberService memberService;
 
     public Result<MemberSelectResponse> findAll(){
@@ -66,5 +70,7 @@ public class MemberApiService {
 
         return memberNum;
     }
+
+
 
 }

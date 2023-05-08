@@ -20,14 +20,18 @@ public class MemberApiController {
     private final MemberService memberService;
     private final MemberApiService memberApiService;
 
+    /**
+     * 기본 CRUD
+     */
     @GetMapping
     public ResponseEntity<Result<MemberSelectResponse>> selectMember(){
         Result<MemberSelectResponse> all = memberApiService.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(all);
+        return ResponseEntity.ok(all);
     }
 
     @PostMapping
     public ResponseEntity<MemberCreatedResponse> saveMember(@RequestBody @Validated MemberCreatedRequest request){
+        log.info("==api in==");
         Long memberNum = memberApiService.join(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(new MemberCreatedResponse(memberNum));
     }
