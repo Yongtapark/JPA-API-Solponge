@@ -1,11 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.jobInfo.JobInfo;
+import com.example.demo.entity.jobInfo.JobInfo;
 import com.example.demo.repository.jobInfo.JobInfoQueryRepository;
 import com.example.demo.repository.jobInfo.JobInfoRepository;
 import com.example.demo.service.interfaces.JobInfoService;
 import com.example.demo.utils.SearchCond;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,10 +1,7 @@
 package com.example.demo.service.interfaces;
 
-import com.example.demo.domain.cart.Cart;
-import com.example.demo.domain.cart.CartItem;
-
-
-import java.util.List;
+import com.example.demo.entity.cart.Cart;
+import com.example.demo.entity.cart.CartItem;
 
 public interface CartService {
     /**

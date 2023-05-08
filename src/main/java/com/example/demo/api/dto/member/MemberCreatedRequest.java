@@ -1,6 +1,6 @@
 package com.example.demo.api.dto.member;
 
-import com.example.demo.domain.member.Grade;
+import com.example.demo.entity.member.Grade;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;

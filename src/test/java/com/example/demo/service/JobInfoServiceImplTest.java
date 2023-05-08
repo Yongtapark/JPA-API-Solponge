@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.jobInfo.JobInfo;
+import com.example.demo.entity.jobInfo.JobInfo;
 import com.example.demo.repository.jobInfo.JobInfoRepository;
 import com.example.demo.service.interfaces.JobInfoService;
 import com.example.demo.utils.SearchCond;

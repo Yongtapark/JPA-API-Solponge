@@ -1,6 +1,6 @@
 package com.example.demo.service.interfaces;
 
-import com.example.demo.domain.jobInfo.JobInfo;
+import com.example.demo.entity.jobInfo.JobInfo;
 import com.example.demo.utils.SearchCond;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

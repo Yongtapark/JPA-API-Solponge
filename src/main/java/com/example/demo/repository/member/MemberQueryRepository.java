@@ -1,6 +1,6 @@
 package com.example.demo.repository.member;
 
-import com.example.demo.domain.member.Member;
+import com.example.demo.entity.member.Member;
 import com.example.demo.utils.SearchCond;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.demo.domain.member.QMember.*;
+import static com.example.demo.entity.member.QMember.*;
 
 
 public class MemberQueryRepository {

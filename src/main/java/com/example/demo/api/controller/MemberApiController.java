@@ -1,22 +1,15 @@
 package com.example.demo.api.controller;
 
 import com.example.demo.api.apiService.MemberApiService;
-import com.example.demo.api.dto.member.MemberCreatedRequest;
-import com.example.demo.api.dto.member.MemberCreatedResponse;
-import com.example.demo.api.dto.member.MemberUpdatedRequest;
-import com.example.demo.api.dto.member.MemberUpdatedResponse;
-import com.example.demo.domain.member.Member;
-import com.example.demo.exception.MemberNotFoundException;
+import com.example.demo.api.dto.Result;
+import com.example.demo.api.dto.member.*;
 import com.example.demo.service.interfaces.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 
 @RestController
@@ -26,6 +19,12 @@ import java.util.Optional;
 public class MemberApiController {
     private final MemberService memberService;
     private final MemberApiService memberApiService;
+
+    @GetMapping
+    public ResponseEntity<Result<MemberSelectResponse>> selectMember(){
+        Result<MemberSelectResponse> all = memberApiService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(all);
+    }
 
     @PostMapping
     public ResponseEntity<MemberCreatedResponse> saveMember(@RequestBody @Validated MemberCreatedRequest request){
@@ -46,4 +45,6 @@ public class MemberApiController {
         memberService.delete(memberNum);
       return ResponseEntity.noContent().build();
     }
+
+
 }

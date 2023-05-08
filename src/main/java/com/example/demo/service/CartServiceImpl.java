@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
 
-import com.example.demo.domain.cart.Cart;
-import com.example.demo.domain.cart.CartItem;
+import com.example.demo.entity.cart.Cart;
+import com.example.demo.entity.cart.CartItem;
 import com.example.demo.repository.cart.CartItemRepository;
 
 import com.example.demo.repository.cart.CartQueryRepository;

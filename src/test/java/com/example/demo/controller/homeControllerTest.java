@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.cart.Cart;
-import com.example.demo.domain.member.Member;
+import com.example.demo.entity.cart.Cart;
+import com.example.demo.entity.member.Member;
 import com.example.demo.service.interfaces.CartService;
 import com.example.demo.service.interfaces.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Slf4j
 @RequiredArgsConstructor

@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.cart.Cart;
-import com.example.demo.domain.cart.CartItem;
-import com.example.demo.domain.member.Member;
-import com.example.demo.domain.member.login.session.SessionConst;
-import com.example.demo.domain.payment.OrderList;
-import com.example.demo.domain.payment.PayForm;
-import com.example.demo.domain.payment.Payment;
-import com.example.demo.domain.product.Product;
+import com.example.demo.entity.cart.Cart;
+import com.example.demo.entity.cart.CartItem;
+import com.example.demo.entity.member.Member;
+import com.example.demo.entity.member.login.session.SessionConst;
+import com.example.demo.entity.payment.OrderList;
+import com.example.demo.entity.payment.PayForm;
+import com.example.demo.entity.payment.Payment;
+import com.example.demo.entity.product.Product;
 import com.example.demo.service.interfaces.CartService;
 import com.example.demo.service.interfaces.MemberService;
 import com.example.demo.service.interfaces.PaymentService;

@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.member.login.LoginForm;
-import com.example.demo.domain.member.login.session.SessionConst;
-import com.example.demo.domain.member.Member;
+import com.example.demo.entity.member.login.LoginForm;
+import com.example.demo.entity.member.login.session.SessionConst;
+import com.example.demo.entity.member.Member;
 import com.example.demo.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

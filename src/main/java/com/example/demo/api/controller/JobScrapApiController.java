@@ -1,7 +1,7 @@
 package com.example.demo.api.controller;
 
-import com.example.demo.domain.companyScrap.CompanyScrap;
-import com.example.demo.domain.infoScrap.InfoScrap;
+import com.example.demo.entity.companyScrap.CompanyScrap;
+import com.example.demo.entity.infoScrap.InfoScrap;
 import com.example.demo.service.interfaces.JobScrapService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.member.Member;
-import com.example.demo.domain.member.login.session.SessionConst;
-import com.example.demo.domain.product.Product;
+import com.example.demo.entity.member.Member;
+import com.example.demo.entity.member.login.session.SessionConst;
+import com.example.demo.entity.product.Product;
 import com.example.demo.utils.SearchCond;
 import com.example.demo.service.interfaces.ProductService;
 import lombok.RequiredArgsConstructor;

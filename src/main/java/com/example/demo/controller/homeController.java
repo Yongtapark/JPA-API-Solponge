@@ -1,11 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.cart.Cart;
-import com.example.demo.domain.companyScrap.CompanyScrap;
-import com.example.demo.domain.infoScrap.InfoScrap;
-import com.example.demo.domain.member.Member;
+import com.example.demo.entity.cart.Cart;
+import com.example.demo.entity.companyScrap.CompanyScrap;
+import com.example.demo.entity.infoScrap.InfoScrap;
+import com.example.demo.entity.member.Member;
 import com.example.demo.api.dto.member.MemberCreatedRequest;
-import com.example.demo.domain.member.login.session.SessionConst;
+import com.example.demo.entity.member.login.session.SessionConst;
 import com.example.demo.service.interfaces.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

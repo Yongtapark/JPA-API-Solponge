@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.payment.Payment;
+import com.example.demo.entity.payment.Payment;
 import com.example.demo.utils.SearchCond;
 import com.example.demo.repository.payment.PaymentQueryRepository;
 import com.example.demo.repository.payment.PaymentRepository;

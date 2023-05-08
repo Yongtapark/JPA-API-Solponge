@@ -1,6 +1,6 @@
 package com.example.demo.repository.product;
 
-import com.example.demo.domain.product.Product;
+import com.example.demo.entity.product.Product;
 import com.example.demo.utils.SearchCond;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static com.example.demo.domain.product.QProduct.*;
+import static com.example.demo.entity.product.QProduct.*;
 @Slf4j
 public class ProductQueryRepository {
 

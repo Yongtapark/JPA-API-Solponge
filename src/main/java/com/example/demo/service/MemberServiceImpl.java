@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.member.Member;
+import com.example.demo.entity.member.Member;
 import com.example.demo.exception.MemberNotFoundException;
 import com.example.demo.utils.SearchCond;
 import com.example.demo.repository.member.MemberQueryRepository;
@@ -9,7 +9,6 @@ import com.example.demo.service.interfaces.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

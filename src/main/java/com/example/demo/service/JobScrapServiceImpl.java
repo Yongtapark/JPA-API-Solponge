@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.companyScrap.CompanyScrap;
-import com.example.demo.domain.infoScrap.InfoScrap;
+import com.example.demo.entity.companyScrap.CompanyScrap;
+import com.example.demo.entity.infoScrap.InfoScrap;
 import com.example.demo.repository.companyScrap.CompanyScrapRepository;
 import com.example.demo.repository.infoScrap.InfoScrapRepository;
 import com.example.demo.service.interfaces.JobScrapService;

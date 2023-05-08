@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.cart.Cart;
+import com.example.demo.entity.cart.Cart;
 import com.example.demo.repository.cart.CartRepository;
 import com.example.demo.service.interfaces.CartService;
 import lombok.Getter;

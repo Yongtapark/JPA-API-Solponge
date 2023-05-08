@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.companyScrap.CompanyScrap;
-import com.example.demo.domain.infoScrap.InfoScrap;
-import com.example.demo.domain.jobInfo.JobInfo;
-import com.example.demo.domain.member.Member;
-import com.example.demo.domain.member.login.session.SessionConst;
+import com.example.demo.entity.companyScrap.CompanyScrap;
+import com.example.demo.entity.infoScrap.InfoScrap;
+import com.example.demo.entity.jobInfo.JobInfo;
+import com.example.demo.entity.member.Member;
+import com.example.demo.entity.member.login.session.SessionConst;
 import com.example.demo.service.interfaces.JobInfoService;
 import com.example.demo.service.interfaces.JobScrapService;
 import com.example.demo.utils.SearchCond;
@@ -19,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

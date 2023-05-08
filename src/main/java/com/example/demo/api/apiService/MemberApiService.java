@@ -1,16 +1,18 @@
 package com.example.demo.api.apiService;
 
+import com.example.demo.api.dto.Result;
 import com.example.demo.api.dto.member.MemberCreatedRequest;
+import com.example.demo.api.dto.member.MemberSelectResponse;
 import com.example.demo.api.dto.member.MemberUpdatedRequest;
-import com.example.demo.domain.member.Member;
+import com.example.demo.entity.member.Member;
 import com.example.demo.service.interfaces.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
-import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -18,6 +20,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class MemberApiService {
     private final MemberService memberService;
+
+    public Result<MemberSelectResponse> findAll(){
+        List<Member> all = memberService.findAll();
+        List<MemberSelectResponse> collect = all.stream()
+                .map(m -> new MemberSelectResponse(m.getMemberNum(),
+                        m.getMemberId(),
+                        m.getMemberPwd(),
+                        m.getMemberAddress(),
+                        m.getMemberPhone(),
+                        m.getMemberEmail()))
+                .collect(Collectors.toList());
+        return new Result(collect);
+    }
 
     public Long join(MemberCreatedRequest request) {
 

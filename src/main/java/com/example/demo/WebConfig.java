@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.domain.member.login.interceptor.AdminLoginCheckInterceptor;
-import com.example.demo.domain.member.login.interceptor.LoginCheckInterceptor;
+import com.example.demo.entity.member.login.interceptor.AdminLoginCheckInterceptor;
+import com.example.demo.entity.member.login.interceptor.LoginCheckInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

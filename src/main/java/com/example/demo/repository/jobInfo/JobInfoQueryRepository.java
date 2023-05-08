@@ -1,12 +1,10 @@
 package com.example.demo.repository.jobInfo;
 
-import com.example.demo.domain.jobInfo.JobInfo;
+import com.example.demo.entity.jobInfo.JobInfo;
 import com.example.demo.repository.companyScrap.CompanyScrapRepository;
 import com.example.demo.repository.infoScrap.InfoScrapRepository;
 import com.example.demo.utils.SearchCond;
-import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -14,15 +12,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.example.demo.domain.companyScrap.QCompanyScrap.companyScrap;
-import static com.example.demo.domain.infoScrap.QInfoScrap.infoScrap;
-import static com.example.demo.domain.jobInfo.QJobInfo.jobInfo;
+import static com.example.demo.entity.companyScrap.QCompanyScrap.companyScrap;
+import static com.example.demo.entity.infoScrap.QInfoScrap.infoScrap;
+import static com.example.demo.entity.jobInfo.QJobInfo.jobInfo;
 
 
 public class JobInfoQueryRepository {

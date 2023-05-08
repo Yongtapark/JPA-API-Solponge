@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.product.Product;
+import com.example.demo.entity.product.Product;
 import com.example.demo.repository.product.ProductQueryRepository;
 import com.example.demo.repository.product.ProductRepository;
 import com.example.demo.utils.SearchCond;
