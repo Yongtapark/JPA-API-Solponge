@@ -9,6 +9,9 @@ SpringBoot
 Spring Data JPA
 QueryDsl
 H2 DB
+### 엔티티 다이어그램
+![제목 없음](https://user-images.githubusercontent.com/91367204/236716137-e9dcd1fb-672e-4145-a857-93c3455d23a9.png)
+
 ### 변경점
 ##### 1. model -> RESTful API 
 
