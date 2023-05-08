@@ -1,10 +1,17 @@
 package com.example.demo.api.dto.member;
 
 import com.example.demo.entity.member.Grade;
+import com.example.demo.utils.AESUtil;
 import lombok.Data;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.security.NoSuchAlgorithmException;
 
 @Data
 public class MemberCreatedRequest {
@@ -72,6 +79,20 @@ public class MemberCreatedRequest {
     @NotNull
     public String combinePhone() {
         return this.getMemberPhone1() + "-" + this.getMemberPhone2() + "-" + this.getMemberPhone3();
+    }
+
+
+    @PrePersist
+    @PreUpdate
+    public void encryptPwd() throws Exception {
+        SecretKey secretKey = AESUtil.generateKey();
+        memberPwd = AESUtil.encrypt(memberPwd,secretKey);
+    }
+
+    @PostLoad
+    public void decryptPwd() throws Exception {
+        SecretKey secretKey = AESUtil.generateKey();
+        AESUtil.decrypt(memberPwd,secretKey);
     }
 
     @NotNull
