@@ -22,11 +22,19 @@ public class QPayment extends EntityPathBase<Payment> {
 
     public static final QPayment payment = new QPayment("payment");
 
+    public final com.example.demo.utils.QAuditing _super = new com.example.demo.utils.QAuditing(this);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
+
     public final StringPath deliveryInfo = createString("deliveryInfo");
 
     public final NumberPath<Long> deliveryNum = createNumber("deliveryNum", Long.class);
 
     public final BooleanPath isDeleted = createBoolean("isDeleted");
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
 
     public final com.example.demo.entity.member.QMember member;
 

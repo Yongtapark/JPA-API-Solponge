@@ -28,7 +28,7 @@ public class Product extends Auditing {
     private int productStock;
     private int productSale;
     private int productVisit;
-    private Boolean isDeleted = true;
+    private Boolean isDeleted = false;
 
 
     //생성자 오버로딩

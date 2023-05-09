@@ -1,14 +1,11 @@
-package com.example.demo.api.controller;
+package com.example.demo.api.apiController;
 
 import com.example.demo.api.apiService.ProductApiService;
-import com.example.demo.api.dto.Result;
 import com.example.demo.api.dto.product.ProductSelectDto;
-import com.example.demo.service.interfaces.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

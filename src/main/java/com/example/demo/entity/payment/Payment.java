@@ -2,6 +2,7 @@ package com.example.demo.entity.payment;
 
 import com.example.demo.entity.member.Member;
 import com.example.demo.entity.product.Product;
+import com.example.demo.utils.Auditing;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @NoArgsConstructor
-public class Payment {
+public class Payment extends Auditing {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentNum; //내부용 주문번호
     private Long paymentOrderNum; //외부용 주문번호
@@ -28,7 +29,7 @@ public class Payment {
     private String paymentAddress;
     private  String deliveryInfo;
     private long deliveryNum;
-    private Boolean isDeleted = true;
+    private Boolean isDeleted = false;
     private int success=0;
 
     public Payment(Member member, Product product, Long paymentStock, String paymentPhone, String paymentEmail, String paymentAddress, String deliveryInfo, Long paymentOrderNum) {

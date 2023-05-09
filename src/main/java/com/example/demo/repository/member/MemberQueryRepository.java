@@ -70,8 +70,10 @@ public class MemberQueryRepository {
                 .execute();
     }
 
-    public Optional<Member> findByMemberId(String memberId){
-        return memberRepository.findAll().stream()
-                .filter(member -> member.getMemberId().equals(memberId)).findAny();
+    public Optional<Member> findByMemberId(String memberId,String memberPwd){
+        return query.selectFrom(member)
+                .where(member.memberId.eq(memberId).and(member.memberPwd.eq(memberPwd)))
+                .stream().findAny();
     }
+
 }

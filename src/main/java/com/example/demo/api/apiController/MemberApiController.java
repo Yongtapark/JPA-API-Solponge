@@ -1,4 +1,4 @@
-package com.example.demo.api.controller;
+package com.example.demo.api.apiController;
 
 import com.example.demo.api.apiService.MemberApiService;
 import com.example.demo.api.dto.Result;
@@ -30,7 +30,7 @@ public class MemberApiController {
     }
 
     @PostMapping
-    public ResponseEntity<MemberCreatedResponse> saveMember(@RequestBody @Validated MemberCreatedRequest request){
+    public ResponseEntity<MemberCreatedResponse> saveMember(@RequestBody @Validated MemberCreatedRequest request) throws Exception {
         log.info("==api in==");
         Long memberNum = memberApiService.join(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(new MemberCreatedResponse(memberNum));

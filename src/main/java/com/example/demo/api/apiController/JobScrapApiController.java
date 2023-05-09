@@ -1,4 +1,4 @@
-package com.example.demo.api.controller;
+package com.example.demo.api.apiController;
 
 import com.example.demo.entity.companyScrap.CompanyScrap;
 import com.example.demo.entity.infoScrap.InfoScrap;

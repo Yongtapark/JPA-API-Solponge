@@ -8,9 +8,11 @@ import com.example.demo.entity.member.Member;
 import com.example.demo.service.interfaces.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.crypto.SecretKey;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +26,7 @@ public class MemberApiService {
      * 기본 CRUD
      */
     private final MemberService memberService;
+    private final PasswordEncoder passwordEncoder;
 
     public Result<MemberSelectResponse> findAll(){
         List<Member> all = memberService.findAll();
@@ -38,7 +41,8 @@ public class MemberApiService {
         return new Result(collect);
     }
 
-    public Long join(MemberCreatedRequest request) {
+    public Long join(MemberCreatedRequest request){
+        String encodePw = passwordEncoder.encode(request.getMemberPwd());
 
         String email = request.combineEmail();
         String address = request.combineAddress();
@@ -46,7 +50,7 @@ public class MemberApiService {
 
         Member member=new Member(
                 request.getMemberId(),
-                request.getMemberPwd(),
+                encodePw,
                 request.getMemberName(),
                 address,
                 email,

@@ -20,16 +20,7 @@ public class LoginService {
      */
 
     public Member login(String loginId, String loginPwd){
-       /* Optional<Member> byMemberId = memberRepository.findByMemberId(loginId);
-        Member member = byMemberId.get();
-        if (member.getMEMBER_PWD().equals(loginPwd)){
-            return member;
-        }else{
-            return null;
-        }*/
-
-        return queryRepository.findByMemberId(loginId)
-                .filter(m->m.getMemberPwd().equals(loginPwd)).orElse(null);
+        return queryRepository.findByMemberId(loginId,loginPwd).orElse(null);
     }
 
 
